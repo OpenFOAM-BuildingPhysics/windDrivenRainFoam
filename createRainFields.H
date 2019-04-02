@@ -1,70 +1,62 @@
-PtrList<volVectorField> Urain;
-Urain.setSize(phases.size());
-PtrList<surfaceScalarField> phirain;
-phirain.setSize(phases.size());
-PtrList<volScalarField> alpharain;
-alpharain.setSize(phases.size());
-PtrList<volScalarField> scr;
-scr.setSize(phases.size());
+PtrList<volVectorField> Urain(phases.size());
+PtrList<surfaceScalarField> phirain(phases.size());
+PtrList<volScalarField> alpharain(phases.size());
 
-std::stringstream converter; 	
-for (int phase_no = 0; phase_no < phases.size(); phase_no++)
-{
-	string phase_Uname = "U";
-	string phase_phiname = "phi";
-	string phase_alphaname = "alpha";
-	
-	string phase_no_str;
-	std::stringstream convert;
-	convert << phase_no+1;
-	phase_no_str = convert.str();
-	
-	phase_Uname.append(phase_no_str);
-	phase_phiname.append(phase_no_str);
-	phase_alphaname.append(phase_no_str);
+PtrList<volScalarField> scr(phases.size());
 
-	volVectorField Utemp
-	(
-		IOobject
-		(
-			phase_Uname,
-			runTime.timeName(),
-			mesh,
-			IOobject::MUST_READ,
-			IOobject::AUTO_WRITE
-		),
-		mesh
-	);
-	Urain.set(phase_no,Utemp);
+forAll(phases, phase_no)
+{ 
+    word nameU_i ("U" + name(phase_no+1));
+    Urain.set
+    (
+    phase_no,
+    new volVectorField 
+    (
+        IOobject
+        (
+            nameU_i,
+            runTime.timeName(),
+            mesh,
+            IOobject::MUST_READ,
+            IOobject::AUTO_WRITE
+        ),
+        mesh
+    )
+    );
 
-	surfaceScalarField phitemp
-	(
-		IOobject
-		(
-			phase_phiname,
-			runTime.timeName(),
-			mesh,
-			IOobject::NO_READ,
-			IOobject::NO_WRITE
-		),
-		linearInterpolate(Urain[phase_no]) & mesh.Sf()
-	);
-	phirain.set(phase_no,phitemp);
+    word namephi_i ("phi" + name(phase_no+1));
+    phirain.set
+    (
+    phase_no,
+    new surfaceScalarField 
+    (
+        IOobject
+        (
+            namephi_i,
+            runTime.timeName(),
+            mesh,
+            IOobject::NO_READ,
+            IOobject::NO_WRITE
+        ),
+        linearInterpolate(Urain[phase_no]) & mesh.Sf()
+    )
+    );
 
-	volScalarField alphatemp
-	(
-		IOobject
-		(
-			phase_alphaname,
-			runTime.timeName(),
-			mesh,
-			IOobject::MUST_READ,
-			IOobject::AUTO_WRITE
-		),
-		mesh
-	);
-	alpharain.set(phase_no,alphatemp);
-	
+    word namealpha_i ("alpha" + name(phase_no+1));
+    alpharain.set
+    (
+    phase_no,
+    new volScalarField 
+    (
+        IOobject
+        (
+            namealpha_i,
+            runTime.timeName(),
+            mesh,
+            IOobject::MUST_READ,
+            IOobject::AUTO_WRITE
+        ),
+        mesh
+    )
+    );
 }
-
-	
