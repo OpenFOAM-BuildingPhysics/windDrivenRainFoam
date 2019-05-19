@@ -7,5 +7,3 @@ fvScalarMatrix alphaEqn
 alphaEqn.relax();
 
 alphaEqn.solve();
-
-alpharain[phase_no].correctBoundaryConditions();

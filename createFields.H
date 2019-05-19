@@ -63,19 +63,6 @@ volVectorField U
 U = U*scalingFactor;
 U.correctBoundaryConditions();
 
-surfaceScalarField phiwind
-(
-    IOobject
-    (
-        "phiwind",
-        runTime.timeName(),
-        mesh,
-        IOobject::READ_IF_PRESENT,
-        IOobject::NO_WRITE
-    ),
-    linearInterpolate(U) & mesh.Sf()
-);
-
 volScalarField Re
 (
     IOobject

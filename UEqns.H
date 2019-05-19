@@ -30,6 +30,4 @@ UrainEqn.relax();
 
 UrainEqn.solve();
 
-Urain[phase_no].correctBoundaryConditions();
-
 phirain[phase_no] = fvc::interpolate(Urain[phase_no]) & mesh.Sf();
