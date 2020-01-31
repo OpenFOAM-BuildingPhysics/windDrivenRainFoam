@@ -47,6 +47,8 @@ List<List<scalar> > phases
 transportProperties.lookup("phases")
 );
 
+#include "calculateFhD.H"
+
 Info<< "Reading field U\n" << endl;
 volVectorField U
 (

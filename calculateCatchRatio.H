@@ -14,7 +14,7 @@ for (int phase_no = 0; phase_no < phases.size(); phase_no++)
     );
     surfaceScalarField surfaceScr
     (
-        (normalvel * fvc::interpolate(alpharain[phase_no])) * ((3600*1E3)/(Rh*phases[phase_no][1]))    
+        (normalvel * fvc::interpolate(alpharain[phase_no])) * ((3600*1E3)/(Rh*DFh[phase_no]))    
     );
     const surfaceScalarField::Boundary& patchSurfaceScr = surfaceScr.boundaryField();
 
@@ -61,6 +61,6 @@ volScalarField gcr //initialize global catch ratio field
 
 for (int phase_no = 0; phase_no < phases.size(); phase_no++)
 {
-    gcr += scr[phase_no]*phases[phase_no][1];
+    gcr += scr[phase_no]*DFh[phase_no];
 }
 gcr.write();
