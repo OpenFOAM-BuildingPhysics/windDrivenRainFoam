@@ -75,7 +75,7 @@ int main(int argc, char *argv[])
                 
                 #include "alphaEqns.H"
                 
-                dimensionedScalar dp ("dp", dimensionSet(0,1,0,0,0,0,0), phases[phase_no][0]);         
+                dimensionedScalar dp ("dp", dimensionSet(0,1,0,0,0,0,0), phases[phase_no]);         
                             
                 volScalarField magUr = mag(U - Urain[phase_no]);
                 

@@ -1,5 +1,5 @@
 Info<< nl << "Calculating specific catch ratio fields\n" << endl;
-for (int phase_no = 0; phase_no < phases.size(); phase_no++)
+forAll (phases, phase_no)
 {
     string phase_scrname = "scr";
     string phase_no_str;         
@@ -14,7 +14,7 @@ for (int phase_no = 0; phase_no < phases.size(); phase_no++)
     );
     surfaceScalarField surfaceScr
     (
-        (normalvel * fvc::interpolate(alpharain[phase_no])) * ((3600*1E3)/(Rh*DFh[phase_no]))    
+        (normalvel * fvc::interpolate(alpharain[phase_no])) * ((3600*1E3)/(RhRef*DFh[0][phase_no]))    
     );
     const surfaceScalarField::Boundary& patchSurfaceScr = surfaceScr.boundaryField();
 
@@ -42,25 +42,35 @@ for (int phase_no = 0; phase_no < phases.size(); phase_no++)
     scr[phase_no].write();
 }
 
-Info<< nl << "Calculating catch ratio field\n" << endl;
-
-volScalarField gcr //initialize global catch ratio field
-(
-    IOobject
-    (
-        "gcr",
-        runTime.timeName(),
-        mesh,
-        IOobject::NO_READ,
-        IOobject::NO_WRITE
-    ),
-    mesh,
-    dimensionedScalar("gcr", dimless, 0.0)
-    
-);
-
-for (int phase_no = 0; phase_no < phases.size(); phase_no++)
+Info << "Calculating catch ratio field\n" << endl;
+forAll (Rh, i)
 {
-    gcr += scr[phase_no]*DFh[phase_no];
+    string gcrname = "gcr";    
+
+    string rh_str;
+    std::stringstream convert;
+    convert << Rh[i];
+    rh_str = convert.str();    
+
+    gcrname.append(rh_str);    
+
+    volScalarField gcrtemp
+    (
+        IOobject
+        (
+            gcrname,
+            runTime.timeName(),
+            mesh,
+            IOobject::NO_READ,
+            IOobject::NO_WRITE
+        ),
+        mesh,
+        dimensionedScalar("gcr", dimless, 0.0)
+    );
+
+    forAll (phases, phase_no)
+    {
+        gcrtemp += scr[phase_no]*DFh[i][phase_no];
+    }
+    gcrtemp.write();
 }
-gcr.write();

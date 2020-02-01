@@ -1,10 +1,10 @@
-scalar best( scalar d, scalar Rh )
+scalar best( scalar d_, scalar Rh_ )
 {
 // Out: BEST (cumulative probability IN AIR for raindrop diameter considered)
 
-    scalar a = 1.3 * Foam::pow(Rh,0.232);
+    scalar a = 1.3 * Foam::pow(Rh_,0.232);
 
-    scalar best_output = 1 - Foam::exp( -  (Foam::pow(d/a,2.25))  );
+    scalar best_output = 1 - Foam::exp( -  (Foam::pow(d_/a,2.25))  );
     
     return best_output;
 }

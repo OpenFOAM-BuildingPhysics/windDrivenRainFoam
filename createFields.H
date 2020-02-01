@@ -11,10 +11,6 @@ IOdictionary transportProperties
         IOobject::NO_WRITE
     )
 );
-dimensionedScalar Rh
-(
-    transportProperties.lookup("Rh")
-);
 dimensionedScalar temp
 (
     transportProperties.lookup("temp")
@@ -42,11 +38,15 @@ scalar scalingFactor
     transportProperties.lookupOrDefault<scalar>("scalingFactor", 1.0)
 );
 const bool solveTD = transportProperties.lookupOrDefault("solveTD", false);    
-List<List<scalar> > phases
+List<scalar> Rh
+(
+transportProperties.lookup("Rh")
+);
+List<scalar> phases
 (
 transportProperties.lookup("phases")
 );
-
+scalar RhRef = 1.0;
 #include "calculateFhD.H"
 
 Info<< "Reading field U\n" << endl;
