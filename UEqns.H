@@ -2,8 +2,6 @@ volTensorField Rca(-nutrain*(T(fvc::grad(Urain[phase_no]))));
 Rca = Rca + (2.0/3.0)*sqr(Ctrain[phase_no])*I*k - (2.0/3.0)*I*tr(Rca);
 Rca.correctBoundaryConditions();
 
-scalar smallValue = gMax(alpharain[phase_no])*0.001;
-
 surfaceScalarField phiRa
 (
     - fvc::interpolate(nutrain)

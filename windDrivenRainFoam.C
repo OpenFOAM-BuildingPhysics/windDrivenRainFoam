@@ -28,7 +28,7 @@ Description
     Solves for wind-driven rain with an Eulerian multiphase model
     Written by Aytac Kubilay, March 2012, ETH Zurich/Empa
     
-    Latest Update: 17.02.2015
+    Latest Update: 02.02.2020
 
 \*---------------------------------------------------------------------------*/
 
@@ -70,7 +70,7 @@ int main(int argc, char *argv[])
         
         for (int nonOrth=0; nonOrth<=simple.nNonOrthCorr(); nonOrth++)
         {
-            for (int phase_no = 0; phase_no < phases.size(); phase_no++)
+            forAll (phases, phase_no)
             {
                 
                 #include "alphaEqns.H"
@@ -96,28 +96,11 @@ int main(int argc, char *argv[])
             }
         }
 
-        if (runTime.outputTime())
-        {
-            for (int phase_no = 0; phase_no < phases.size(); phase_no++)
-            {
-                Urain[phase_no].write();                
-                alpharain[phase_no].write();
-                //Ctrain[phase_no].write();
-            }
-        }
         runTime.write();
         
         Info<< "ExecutionTime = " << runTime.elapsedCpuTime() << " s"
             << " ClockTime = " << runTime.elapsedClockTime() << " s"
             << nl << endl;
-    }
-    
-    Info<< "Writing final output\n" << endl;
-    for (int phase_no = 0; phase_no < phases.size(); phase_no++)
-    {
-        Urain[phase_no].write();                
-        alpharain[phase_no].write();
-        //Ctrain[phase_no].write();
     }
     
     #include "calculateCatchRatio.H"

@@ -55,11 +55,3 @@ forAll (Rh, i)
     }
 }
 ///////////////////////////////////////////
-
-Info << "DFh: " << endl;
-int z = 0;
-while (z<phases.size())
-{
-    Info << DFh[0][z] << endl;
-    z = z + 1;
-}

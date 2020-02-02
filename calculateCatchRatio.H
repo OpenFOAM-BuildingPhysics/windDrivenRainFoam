@@ -14,7 +14,6 @@ forAll (phases, phase_no)
     );
     surfaceScalarField surfaceScr
     (
-//        (normalvel * fvc::interpolate(alpharain[phase_no])) * ((3600*1E3)/(RhRef*DFh[0][phase_no]))    
         (normalvel * fvc::interpolate(alpharain[phase_no])) / (1.0 * Vt[phase_no]) //Here 1.0 is the alpha values at inlets 
     );
     const surfaceScalarField::Boundary& patchSurfaceScr = surfaceScr.boundaryField();

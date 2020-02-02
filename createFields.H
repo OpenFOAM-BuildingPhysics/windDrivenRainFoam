@@ -40,13 +40,13 @@ scalar scalingFactor
 const bool solveTD = transportProperties.lookupOrDefault("solveTD", false);    
 List<scalar> Rh
 (
-transportProperties.lookup("Rh")
+    transportProperties.lookup("Rh")
 );
 List<scalar> phases
 (
-transportProperties.lookup("phases")
+    transportProperties.lookup("phases")
 );
-scalar RhRef = 1.0;
+
 #include "calculateFhD.H"
 
 Info<< "Reading field U\n" << endl;

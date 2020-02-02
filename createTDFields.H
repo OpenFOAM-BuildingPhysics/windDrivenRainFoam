@@ -1,6 +1,6 @@
 PtrList<volScalarField> Ctrain;
 Ctrain.setSize(phases.size());    
-for (int phase_no = 0; phase_no < phases.size(); phase_no++)
+forAll (phases, phase_no)
 {
     string phase_Ctname = "Ct";
     string phase_no_str;         
