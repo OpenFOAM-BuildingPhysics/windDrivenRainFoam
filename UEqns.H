@@ -7,7 +7,7 @@ scalar smallValue = gMax(alpharain[phase_no])*0.001;
 surfaceScalarField phiRa
 (
     - fvc::interpolate(nutrain)
-    *mesh.magSf()*fvc::snGrad(alpharain[phase_no])/fvc::interpolate(alpharain[phase_no] + smallValue)
+    *mesh.magSf()*fvc::snGrad(alpharain[phase_no])/fvc::interpolate(alpharain[phase_no] + SMALL)
 );
 
 fvVectorMatrix UrainEqn
@@ -20,7 +20,7 @@ fvVectorMatrix UrainEqn
 
     + fvm::div(phiRa, Urain[phase_no],"div(phirain,Urain)")
 //    - fvm::Sp(fvc::div(phiRa), Urain[phase_no]) //removed for bounded div scheme
-    + (fvc::grad(alpharain[phase_no])/(fvc::average(alpharain[phase_no]) + smallValue) & Rca)
+    + (fvc::grad(alpharain[phase_no])/(fvc::average(alpharain[phase_no]) + SMALL) & Rca)
     ==
     g
     + ((3* mua * CdRe)/(4 * rhop * dp * dp))*U
