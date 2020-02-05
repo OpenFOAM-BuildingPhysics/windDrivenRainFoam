@@ -5,7 +5,7 @@ Rca.correctBoundaryConditions();
 surfaceScalarField phiRa
 (
     - fvc::interpolate(nutrain)
-    *mesh.magSf()*fvc::snGrad(alpharain[phase_no])/fvc::interpolate(alpharain[phase_no] + SMALL)
+    *mesh.magSf()*fvc::snGrad(alpharain[phase_no])/fvc::interpolate(alpharain[phase_no] + scalar(0.001))
 );
 
 fvVectorMatrix UrainEqn
@@ -18,7 +18,7 @@ fvVectorMatrix UrainEqn
 
     + fvm::div(phiRa, Urain[phase_no],"div(phirain,Urain)")
 //    - fvm::Sp(fvc::div(phiRa), Urain[phase_no]) //removed for bounded div scheme
-    + (fvc::grad(alpharain[phase_no])/(fvc::average(alpharain[phase_no]) + SMALL) & Rca)
+    + (fvc::grad(alpharain[phase_no])/(fvc::average(alpharain[phase_no]) + scalar(0.001)) & Rca)
     ==
     g
     + ((3* mua * CdRe)/(4 * rhop * dp * dp))*U
