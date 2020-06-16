@@ -1,1 +1,5 @@
-13.07.2018: initial commit for openfoam v6
+windDrivenRainFoam
+
+An open-source solver for wind-driven rain based on OpenFOAM
+
+More information: https://carmeliet.ethz.ch/research/downloads
