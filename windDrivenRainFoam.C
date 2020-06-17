@@ -64,7 +64,7 @@ int main(int argc, char *argv[])
     Info << "Air dynamic viscosity: " << mua.value() << " kg/m-s" << endl;
     Info << "Water density: " << rhop.value() << " kg/m3" << endl;
     
-    while (simple.loop(runTime))
+    while (simple.loop())
     {
         Info<< nl << "Time = " << runTime.timeName() << nl;
         
