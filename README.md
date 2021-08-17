@@ -9,4 +9,6 @@ The solver is tested for OpenFOAM v6 and v1806.
 * For OpenFOAM v6 (OpenFOAM Foundation), use branch "master"
 * For OpenFOAM v1806 (OpenCFD-ESI), use branch "master-v1806"
 
+Read [windDrivenRainFoam wiki](https://gitlab.ethz.ch/openfoam-cbp/solvers/winddrivenrainfoam/-/wikis/home) for documentation.
+
 More information: https://carmeliet.ethz.ch/research/downloads
