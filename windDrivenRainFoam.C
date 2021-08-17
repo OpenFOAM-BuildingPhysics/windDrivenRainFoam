@@ -68,32 +68,29 @@ int main(int argc, char *argv[])
     {
         Info<< nl << "Time = " << runTime.timeName() << nl;
         
-        for (int nonOrth=0; nonOrth<=simple.nNonOrthCorr(); nonOrth++)
+        forAll (phases, phase_no)
         {
-            forAll (phases, phase_no)
-            {
-                
-                #include "alphaEqns.H"
-                
-                dimensionedScalar dp ("dp", dimensionSet(0,1,0,0,0,0,0), phases[phase_no]);         
-                            
-                volScalarField magUr = mag(U - Urain[phase_no]);
-                
-                Re = (magUr*dp*rhoa)/mua;
-                CdRe = GET_CdRe(Re);
-                CdRe.correctBoundaryConditions();
+            
+            #include "alphaEqns.H"
+            
+            dimensionedScalar dp ("dp", dimensionSet(0,1,0,0,0,0,0), phases[phase_no]);         
+                        
+            volScalarField magUr = mag(U - Urain[phase_no]);
+            
+            Re = (magUr*dp*rhoa)/mua;
+            CdRe = GET_CdRe(Re);
+            CdRe.correctBoundaryConditions();
 
-                if (solveTD)
-                { 
-                    tfl = 0.2*(k/epsilon);
-                    tp = (4*rhop*dp*dp)/(3*mua*CdRe);
-                    Ctrain[phase_no] = sqrt( tfl/(tfl+tp) );
-                    nutrain = nut*sqr(Ctrain[phase_no]);
-                }
-
-                #include "UEqns.H"
-
+            if (solveTD)
+            { 
+                tfl = 0.2*(k/epsilon);
+                tp = (4*rhop*dp*dp)/(3*mua*CdRe);
+                Ctrain[phase_no] = sqrt( tfl/(tfl+tp) );
+                nutrain = nut*sqr(Ctrain[phase_no]);
             }
+
+            #include "UEqns.H"
+
         }
 
         runTime.write();
