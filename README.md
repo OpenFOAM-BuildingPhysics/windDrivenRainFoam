@@ -11,7 +11,7 @@ The solver is tested for the following OpenFOAM versions:
 
 ### Usage
 
-You can compile the solver for the specific OpenFOAM version by checking out commit with corresponding tag. For example, for OpenFOAM v9:
+You can compile the solver for a specific OpenFOAM version by checking out the commit with corresponding tag. For example, for OpenFOAM v9:
 
 	git clone https://gitlab.ethz.ch/openfoam-cbp/solvers/winddrivenrainfoam.git
 	cd winddrivenrainfoam
@@ -21,6 +21,10 @@ You can compile the solver for the specific OpenFOAM version by checking out com
 ### Documentation
 
 Read [windDrivenRainFoam wiki](https://gitlab.ethz.ch/openfoam-cbp/solvers/winddrivenrainfoam/-/wikis/home) for documentation.
+
+### Tutorial cases
+
+Tutorial case for the WDR exposure of an isolated cubic building can be found [here](https://gitlab.ethz.ch/openfoam-cbp/tutorials/winddrivenrainfoam).
 
 ### Validation
 
