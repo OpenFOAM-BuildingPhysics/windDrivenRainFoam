@@ -13,7 +13,7 @@ IOdictionary transportProperties
 );
 dimensionedScalar temp
 (
-    transportProperties.lookup("temp")
+    transportProperties.lookupOrDefault<scalar>("temp", 285.85)
 );    
 dimensionedScalar rhoa
 (
