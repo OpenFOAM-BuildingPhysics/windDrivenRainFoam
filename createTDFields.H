@@ -1,28 +1,25 @@
-PtrList<volScalarField> Ctrain;
-Ctrain.setSize(phases.size());    
+PtrList<volScalarField> Ctrain(phases.size());
+  
 forAll (phases, phase_no)
 {
-    string phase_Ctname = "Ct";
-    string phase_no_str;         
-    std::stringstream convert;
-    convert << phase_no+1;
-    phase_no_str = convert.str();
-    phase_Ctname.append(phase_no_str);
-    
-    volScalarField Cttemp
+    word nameCt_i ("Ct" + name(phase_no+1));
+    Ctrain.set
+    (
+    phase_no,
+    new volScalarField
     (
         IOobject
         (
-            phase_Ctname,
+            nameCt_i,
             runTime.timeName(),
             mesh,
             IOobject::READ_IF_PRESENT,
             IOobject::NO_WRITE
         ),
         mesh,
-        dimensionedScalar(phase_Ctname,dimensionSet(0,0,0,0,0,0,0),0)
+        dimensionedScalar(nameCt_i,dimensionSet(0,0,0,0,0,0,0),0)
+    )
     );
-    Ctrain.set(phase_no,Cttemp);
 }
 
 volScalarField k
