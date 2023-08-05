@@ -13,6 +13,8 @@ IOdictionary transportProperties
 );
 dimensionedScalar temp
 (
+    "temp",
+    dimensionSet(0,0,0,1,0,0,0),
     transportProperties.lookup("temp")
 );    
 dimensionedScalar rhoa
