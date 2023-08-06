@@ -32,8 +32,17 @@ Description
 
 \*---------------------------------------------------------------------------*/
 
-#include "fvCFD.H"
+#include "argList.H"
+#include "fvModels.H"
+#include "fvConstraints.H"
+#include "uniformDimensionedFields.H"
 #include "simpleControl.H"
+
+#include "fvc.H"
+#include "fvm.H"
+
+
+using namespace Foam;
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
