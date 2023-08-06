@@ -6,17 +6,17 @@ An open-source solver for wind-driven rain based on OpenFOAM
 
 The solver is tested for the following OpenFOAM versions:
 
-* OpenFOAM-org (OpenFOAM Foundation) v6, v7, v8, v9 
+* OpenFOAM-org (OpenFOAM Foundation) v6, v7, v8, v9, v10, v11
 * OpenFOAM-com (OpenCFD-ESI) v1806, v2006, v2106
 
 ### Usage
 
 You can compile the solver for a specific OpenFOAM version by checking out the commit with corresponding tag. For example, for OpenFOAM v9:
 
-	git clone https://gitlab.ethz.ch/openfoam-cbp/solvers/winddrivenrainfoam.git
-	cd winddrivenrainfoam
-	git checkout tags/of-org_v9.0
-	wmake
+    git clone https://gitlab.ethz.ch/openfoam-cbp/solvers/winddrivenrainfoam.git
+    cd winddrivenrainfoam
+    git checkout tags/of-org_v9.0
+    wmake
 
 See the list of tags for different versions [here](https://gitlab.ethz.ch/openfoam-cbp/solvers/winddrivenrainfoam/-/tags)
 
