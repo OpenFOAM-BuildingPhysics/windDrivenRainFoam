@@ -26,7 +26,7 @@ Read [windDrivenRainFoam wiki](https://gitlab.ethz.ch/openfoam-cbp/solvers/windd
 
 ### Tutorial cases
 
-Tutorial case for the WDR exposure of an isolated cubic building can be found [here](https://github.com/OpenFOAM-BuildingPhysics/urbanMicroclimateFoam-tutorials).
+Tutorial case for the WDR exposure of an isolated cubic building can be found [here](https://github.com/OpenFOAM-BuildingPhysics/windDrivenRainFoam-tutorials).
 
 ### Validation
 
