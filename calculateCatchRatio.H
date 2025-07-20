@@ -23,7 +23,7 @@ forAll (phases, phase_no)
         IOobject
         (
             phase_scrname,
-            runTime.timeName(),
+            runTime.name(),
             mesh,
             IOobject::NO_READ,
             IOobject::NO_WRITE
@@ -59,7 +59,7 @@ forAll (Rh, i)
         IOobject
         (
             gcrname,
-            runTime.timeName(),
+            runTime.name(),
             mesh,
             IOobject::NO_READ,
             IOobject::NO_WRITE

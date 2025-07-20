@@ -72,7 +72,7 @@ volScalarField Re
     IOobject
     (
         "Re",
-        runTime.timeName(),
+        runTime.name(),
         mesh,
         IOobject::READ_IF_PRESENT,
         IOobject::NO_WRITE
@@ -86,7 +86,7 @@ volScalarField CdRe
     IOobject
     (
         "CdRe",
-        runTime.timeName(),
+        runTime.name(),
         mesh,
         IOobject::READ_IF_PRESENT,
         IOobject::NO_WRITE

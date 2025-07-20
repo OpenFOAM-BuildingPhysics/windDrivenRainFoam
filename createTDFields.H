@@ -14,7 +14,7 @@ forAll (phases, phase_no)
         IOobject
         (
             phase_Ctname,
-            runTime.timeName(),
+            runTime.name(),
             mesh,
             IOobject::READ_IF_PRESENT,
             IOobject::NO_WRITE
@@ -78,7 +78,7 @@ volScalarField nutrain
 IOobject
 (
     "nutrain",
-    runTime.timeName(),
+    runTime.name(),
     mesh,
     IOobject::NO_READ,
     IOobject::NO_WRITE
@@ -92,7 +92,7 @@ volScalarField tp
 IOobject
 (
     "tp",
-    runTime.timeName(),
+    runTime.name(),
     mesh,
     IOobject::NO_READ,
     IOobject::NO_WRITE
@@ -106,7 +106,7 @@ volScalarField tfl
 IOobject
 (
     "tfl",
-    runTime.timeName(),
+    runTime.name(),
     mesh,
     IOobject::NO_READ,
     IOobject::NO_WRITE

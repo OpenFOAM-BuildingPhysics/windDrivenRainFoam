@@ -15,7 +15,7 @@ forAll(phases, phase_no)
         IOobject
         (
             nameU_i,
-            runTime.timeName(),
+            runTime.name(),
             mesh,
             IOobject::MUST_READ,
             IOobject::AUTO_WRITE
@@ -33,7 +33,7 @@ forAll(phases, phase_no)
         IOobject
         (
             namephi_i,
-            runTime.timeName(),
+            runTime.name(),
             mesh,
             IOobject::NO_READ,
             IOobject::NO_WRITE
@@ -51,7 +51,7 @@ forAll(phases, phase_no)
         IOobject
         (
             namealpha_i,
-            runTime.timeName(),
+            runTime.name(),
             mesh,
             IOobject::MUST_READ,
             IOobject::AUTO_WRITE

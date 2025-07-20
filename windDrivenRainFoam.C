@@ -75,7 +75,7 @@ int main(int argc, char *argv[])
     
     while (simple.loop(runTime))
     {
-        Info<< nl << "Time = " << runTime.timeName() << nl;
+        Info<< nl << "Time = " << runTime.name() << nl;
         
         forAll (phases, phase_no)
         {
