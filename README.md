@@ -2,7 +2,7 @@
 
 An open-source solver for wind-driven rain based on OpenFOAM
 
-<img src="https://carmeliet.ethz.ch/research/downloads/winddrivenrainfoam/_jcr_content/par/fullwidthimage_0/image.imageformat.fullwidth.1739434017.png"  width="60%">
+<img src="https://raw.githubusercontent.com/wiki/OpenFOAM-BuildingPhysics/windDrivenRainFoam/img/winddrivenrainfoam.png" width="60%">
 
 The solver is tested for the following OpenFOAM versions:
 
@@ -22,7 +22,7 @@ See the list of tags for different versions [here](https://github.com/OpenFOAM-B
 
 ### Documentation
 
-Read [windDrivenRainFoam wiki](https://gitlab.ethz.ch/openfoam-cbp/solvers/winddrivenrainfoam/-/wikis/home) for documentation.
+Read [windDrivenRainFoam wiki](https://github.com/OpenFOAM-BuildingPhysics/windDrivenRainFoam/wiki) for documentation.
 
 ### Tutorial cases
 
